@@ -8,6 +8,7 @@ function ProgrammerForm({ data, onAdd }) {
     level: '',
   })
   const [level, setLevel] = useState('junior')
+
   //handler for radio buttons
   const handleLevel = (e) => {
     setLevel(e.target.value)
