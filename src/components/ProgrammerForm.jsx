@@ -5,9 +5,8 @@ function ProgrammerForm({ data, onAdd }) {
   const [newProgrammer, setNewProgrammer] = useState({
     id: data.length > 0 ? Math.max(...data.map((prog) => prog.id)) + 1 : 1,
     name: '',
-    level: '',
+    level: 'junior',
   })
-  const [level, setLevel] = useState('junior')
 
   //handler for radio buttons
   const handleLevel = (e) => {
@@ -32,8 +31,19 @@ function ProgrammerForm({ data, onAdd }) {
   }
   //Add new programmer handler
   const handleChange = (e) => {
-    let updatedProgrammer = { ...newProgrammer, name: e.target.value }
-    updatedProgrammer.level = level
+    let source = e.target.name
+    let value = e.target.value
+    let updatedProgrammer
+    switch (source) {
+      case 'name':
+        updatedProgrammer = { ...newProgrammer, name: value }
+        break
+      case 'level':
+        updatedProgrammer = { ...newProgrammer, level: value }
+        break
+      default:
+        break
+    }
     setNewProgrammer(updatedProgrammer)
     validateData(updatedProgrammer)
   }
@@ -63,8 +73,8 @@ function ProgrammerForm({ data, onAdd }) {
           name="level"
           id="senior-level"
           value="senior"
-          checked={level === 'senior'}
-          onChange={handleLevel}
+          checked={newProgrammer.level === 'senior'}
+          onChange={handleChange}
         />
       </div>
       <div className="col-auto">
@@ -77,8 +87,8 @@ function ProgrammerForm({ data, onAdd }) {
           name="level"
           id="junior-level"
           value="junior"
-          checked={level === 'junior'}
-          onChange={handleLevel}
+          checked={newProgrammer.level === 'junior'}
+          onChange={handleChange}
         />
       </div>
       <div className="col-auto">
