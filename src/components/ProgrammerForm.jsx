@@ -48,62 +48,61 @@ function ProgrammerForm({ data, onAdd }) {
     validateData(updatedProgrammer)
   }
   return (
-    <div className="row g-3">
-      <div className="col-auto">
-        <label htmlFor="name" className="col-form-label me-2">
-          Name
-        </label>
-        <input
-          className="col-form-control"
-          type="text"
-          name="name"
-          id="name"
-          onChange={handleChange}
-          value={newProgrammer.name}
-          placeholder="Enter a name"
-        />
+      <div className="col-auto m-auto">
+        
+          <label htmlFor="name" className="col-form-label me-2">
+            Name
+          </label>
+          <input
+            className="col-form-control me-5"
+            type="text"
+            name="name"
+            id="name"
+            onChange={handleChange}
+            value={newProgrammer.name}
+            placeholder="Enter a name"
+          />
+        
+        
+          <label className="form-check-label me-3" htmlFor="senior-level">
+            Senior
+          </label>
+          <input
+            className="form-check-input me-5"
+            type="radio"
+            name="level"
+            id="senior-level"
+            value="senior"
+            checked={newProgrammer.level === 'senior'}
+            onChange={handleChange}
+          />
+        
+        
+          <label className="form-checklabel me-3" htmlFor="junior-level">
+            Junior
+          </label>
+          <input
+            className="form-check-input me-5"
+            type="radio"
+            name="level"
+            id="junior-level"
+            value="junior"
+            checked={newProgrammer.level === 'junior'}
+            onChange={handleChange}
+          />
+        
+          <button
+            className="btn btn-primary me-3"
+            disabled={!valid}
+            onClick={() => {
+              onAdd(newProgrammer)
+              resetNewProgrammer()
+            }}
+          >
+            Add
+          </button>
       </div>
-      <div className="col-auto">
-        <label className="form-check-label me-3" htmlFor="senior-level">
-          Senior
-        </label>
-        <input
-          className="form-check-input"
-          type="radio"
-          name="level"
-          id="senior-level"
-          value="senior"
-          checked={newProgrammer.level === 'senior'}
-          onChange={handleChange}
-        />
-      </div>
-      <div className="col-auto">
-        <label className="form-checklabel me-3" htmlFor="junior-level">
-          Junior
-        </label>
-        <input
-          className="form-check-input"
-          type="radio"
-          name="level"
-          id="junior-level"
-          value="junior"
-          checked={newProgrammer.level === 'junior'}
-          onChange={handleChange}
-        />
-      </div>
-      <div className="col-auto">
-        <button
-          className="btn btn-primary"
-          disabled={!valid}
-          onClick={() => {
-            onAdd(newProgrammer)
-            resetNewProgrammer()
-          }}
-        >
-          Add
-        </button>
-      </div>
-    </div>
+
   )
 }
 

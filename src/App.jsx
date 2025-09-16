@@ -115,21 +115,22 @@ function App() {
         </div>
       </div>
       {activeTab === 1 && (
-        <>
-          <div className="container text-center">
+        <div>
+          <div className="row text-center">
             <ProgrammersList
               data={listOfProgrammers}
               onDelete={handleDelete}
-            ></ProgrammersList>
+            ></ProgrammersList></div>
+            <div className="row text-center">
             <ProgrammersForm
               data={listOfProgrammers}
               onAdd={handleAdd}
             ></ProgrammersForm>
           </div>
-        </>
+    </div>
       )}
       {activeTab === 2 && (
-        <div className="container text-center">
+        <div className="text-center">
           <h3 className="text-primary">Your task</h3>
           <p>Here you can plan tasks for programmers.</p>
           <label htmlFor="linesOfCode" className="col-form-label me-2">
